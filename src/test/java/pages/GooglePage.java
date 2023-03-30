@@ -12,7 +12,7 @@ public class GooglePage extends BasePage {
     Logger logger = Logger.getLogger("GooglePage");
 
     //Se crean elementos
-    private final By TXT_SEARCH = By.name("sss");
+    private final By TXT_SEARCH = By.name("q");
     private final By PRIMER_RESULTADO = By.xpath("//*[contains(text(),'Naruto - Wikipedia')]");
 
     //Se crea constructor
