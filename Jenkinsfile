@@ -1,15 +1,11 @@
 pipeline {
-  agent any
+    agent any
 
-  tools {
-    // Install the Maven version configured as "M3" and add it to the path.
-    gradle "Gradle"
-  }
-
-  stages {
-    stage('Construir con Gradle') {
-      steps {
-        echo "Se ejecuto exitosamente"
-      }
+    stages {
+        stage('Hello') {
+            steps {
+                echo 'Hello World'
+            }
+        }
     }
-  }
+}
