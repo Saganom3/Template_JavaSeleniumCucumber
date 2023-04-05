@@ -2,7 +2,13 @@ pipeline {
   agent any
 
   stages {
-    stage('Hello') {
+    stage('Eliminar workspace') {
+      steps {
+        deleteDir()
+      }
+    }
+
+    stage('Clonar repositorio') {
       steps {
         echo 'Hello World'
         // Get some code from a GitHub repository
