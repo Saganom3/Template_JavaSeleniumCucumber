@@ -19,8 +19,11 @@ pipeline {
 
     stage('Compilar y ejecutar pruebas') {
       steps {
+        agent {
+          docker 'gradle'
+        }
         // Run Gradle on a Windoa agent.
-        bat "./gradlew clean build test --rerun-tasks"
+        sh "./gradlew clean build test --rerun-tasks"
 
         // To run Maven on a Windows agent, use
         // bat "mvn -Dmaven.test.failure.ignore=true clean package"  
