@@ -10,20 +10,15 @@ pipeline {
 
     stage('Clonar repositorio') {
       steps {
-        echo 'Hello World'
         // Get some code from a GitHub repository
         git 'https://github.com/Saganom3/Template_JavaSeleniumCucumber.git'
-
       }
     }
 
     stage('Compilar y ejecutar pruebas') {
       steps {
-        agent {
-          docker 'gradle'
-        }
         // Run Gradle on a Windoa agent.
-        sh "./gradlew clean build test --rerun-tasks"
+        powershell "gradle clean test"
 
         // To run Maven on a Windows agent, use
         // bat "mvn -Dmaven.test.failure.ignore=true clean package"  
@@ -31,7 +26,7 @@ pipeline {
     }
     stage('Generar reporte Cucumber') {
       steps {
-        cucumber '**/*.json'
+        cucumber 'build/reports/cucumber'
       }
     }
   }
