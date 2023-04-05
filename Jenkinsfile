@@ -14,11 +14,16 @@ pipeline {
         // Get some code from a GitHub repository
         git 'https://github.com/Saganom3/Template_JavaSeleniumCucumber.git'
 
+      }
+    }
+
+    stage('Compilar y ejecutar pruebas') {
+      steps {
         // Run Gradle on a Windoa agent.
         powershell "gradle clean test"
 
         // To run Maven on a Windows agent, use
-        // bat "mvn -Dmaven.test.failure.ignore=true clean package"      
+        // bat "mvn -Dmaven.test.failure.ignore=true clean package"  
       }
     }
     stage('Generar reporte Cucumber') {
