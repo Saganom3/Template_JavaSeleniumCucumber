@@ -28,7 +28,7 @@ pipeline {
     }
     stage('Generar reporte Cucumber') {
       steps {
-        cucumber 'build/reports/cucumber'
+        cucumber '**/*.json'
       }
     }
   }
