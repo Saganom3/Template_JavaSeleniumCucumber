@@ -31,17 +31,5 @@ pipeline {
         cucumber 'build/reports/cucumber'
       }
     }
-    stage('Publicar informe de Cucumber') {
-      steps {
-        publishHTML(target: [
-          allowMissing: false,
-          alwaysLinkToLastBuild: true,
-          keepAll: true,
-          reportDir: 'build/reports/cucumber',
-          reportFiles: 'index.html',
-          reportName: 'Informe de Cucumber'
-        ])
-      }
-    }
   }
 }
