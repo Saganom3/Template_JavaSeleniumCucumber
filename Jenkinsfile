@@ -26,10 +26,18 @@ pipeline {
         // bat "mvn -Dmaven.test.failure.ignore=true clean package"  
       }
     }
-    stage('Generar reporte Cucumber') {
+    stage('Generate Report') {
       steps {
-        cucumber 'build/reports/cucumber'
+        dir('C:/ProgramData/Jenkins/.jenkins/workspace/Cucumber/PipelineJavaSeleniumCucumber/build/reports/cucumber') {
+          withGradle {
+            bat 'gradlew generateCucumberReports'
+          }
+        }
+      }
+      post {
+        always {
+          cucumberReport 'C:/ProgramData/Jenkins/.jenkins/workspace/Cucumber/PipelineJavaSeleniumCucumber/build/reports/cucumber'
+        }
       }
     }
   }
-}
