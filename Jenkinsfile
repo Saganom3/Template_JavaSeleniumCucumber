@@ -21,5 +21,10 @@ pipeline {
         // bat "mvn -Dmaven.test.failure.ignore=true clean package"      
       }
     }
+    stage('Generar reporte Cucumber') {
+      steps {
+        cucumber 'build/reports/cucumber'
+      }
+    }
   }
 }
